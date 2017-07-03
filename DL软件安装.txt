@@ -1,0 +1,15 @@
+sudo apt-get install python3-pip
+sudo pip3 install --upgrade numpy -i https://mirrors.ustc.edu.cn/pypi/web/simple
+sudo pip3 install --upgrade jupyter -i https://mirrors.ustc.edu.cn/pypi/web/simple
+sudo pip3 install --upgrade tensorflow -i https://mirrors.ustc.edu.cn/pypi/web/simple
+sudo pip3 install --upgrade matplotlib -i https://mirrors.ustc.edu.cn/pypi/web/simple
+sudo pip3 install --upgrade pydicom
+
+
+
+
+
+sudo add-apt-repository ppa:fenics-packages/fenics
+sudo apt-get update
+sudo apt-get install --no-install-recommends fenics
+sudo apt-get dist-upgrade
