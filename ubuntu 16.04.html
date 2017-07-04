@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ubuntu 16.04</title>
+</head>
+<body>
+<div id="wmd-preview" class="wmd-preview"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="se6a" id="ubuntu-1604">ubuntu 16.04</h1><p data-anchor-id="zajp"><code>ubuntu</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="juho" id="一-安装ubuntu-1604">一. 安装ubuntu 16.04</h2><ol data-anchor-id="t7us">
+<li>打开网页<a href="http://releases.ubuntu.com/16.04/" target="_blank">http://releases.ubuntu.com/16.04/</a></li>
+<li>下载ubuntu-16.04-desktop-amd64.iso</li>
+<li>在windows下利用Universal-USB-Installer或在ubuntu下利用Startup Disk Creator制作启动盘.</li>
+<li>利用U盘启动进行安装, 按指示安装, 选择不连接网络安装, 选择手动分区.</li>
+</ol><div class="md-section-divider"></div><h2 data-anchor-id="2vbj" id="二-连接网络">二. 连接网络</h2><ul data-anchor-id="ljnm">
+<li>连接无线网,</li>
+<li>采用mentohust联接有线网 <br>
+<ol><li>下载mentohust_0.3.4-1_amd64.deb</li>
+<li>命令行安装mentohust, <code>$ sudo dpkg -i mentohust_0.3.4-1_amd64.deb</code></li>
+<li>配置IP,DNS</li>
+<li>命令行设置mentohust, <code>$ sudo mentohust -b1</code>, 输入用户名和密码</li></ol></li>
+</ul><div class="md-section-divider"></div><h2 data-anchor-id="ir85" id="三-更新系统">三. 更新系统</h2><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="7jvs"><ol class="linenums"><li class="L0"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> update </span><span class="com">#更新源</span></code></li><li class="L1"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> dist</span><span class="pun">-</span><span class="pln">upgrade </span><span class="com">#更新系统</span></code></li><li class="L2"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> upgrade </span><span class="com">#更新软件</span></code></li></ol></pre><div class="md-section-divider"></div><h2 data-anchor-id="mqi6" id="四-命令安装小型软件">四. 命令安装小型软件</h2><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="ikxi"><ol class="linenums"><li class="L0"><code><span class="com"># rar格式文件生成与解压</span></code></li><li class="L1"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install rar unrar</span></code></li><li class="L2"><code><span class="com"># makefile文件的自动生成程序</span></code></li><li class="L3"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install automake</span></code></li><li class="L4"><code><span class="com"># c,c++编译器和调试器</span></code></li><li class="L5"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install gcc g</span><span class="pun">++</span><span class="pln"> gdb</span></code></li><li class="L6"><code><span class="com"># flash插件</span></code></li><li class="L7"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install flashplugin</span><span class="pun">-</span><span class="pln">installer</span></code></li><li class="L8"><code><span class="com"># qtcreator是一个类似于VC++图形编程环境</span></code></li><li class="L9"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install qtcreator</span></code></li></ol></pre><div class="md-section-divider"></div><h2 data-anchor-id="de3r" id="五-中文输入法sogoupinyin">五. 中文输入法sogoupinyin</h2><ol data-anchor-id="wbx1">
+<li>打开网页<a href="http://pinyin.sogou.com/linux/?r=pinyin" target="_blank">http://pinyin.sogou.com/linux/?r=pinyin</a></li>
+<li>下载并安装sogoupinyin_2.0.0.0072_amd64.deb</li>
+<li>在Language Support中把ibus改为fcitx</li>
+<li>重启电脑</li>
+<li>在soguo输入法配置，在Text entry中点击+添加sogoupinyin</li>
+</ol><div class="md-section-divider"></div><h2 data-anchor-id="9fzi" id="六-解决gedit中文乱码">六. 解决gedit中文乱码</h2><p data-anchor-id="ry3g">由于windows下txt文件的默认编码方式为GBK, 而ubuntu默认不对GBK支持, 所以需要人为设置.</p><p data-anchor-id="d43g">采用dconf-editor修改gedit的配置</p><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="4q7w"><ol class="linenums"><li class="L0"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install dconf</span><span class="pun">-</span><span class="pln">editor</span></code></li><li class="L1"><code><span class="pln">dconf</span><span class="pun">-</span><span class="pln">editor </span></code></li></ol></pre><p data-anchor-id="uo7w">在展开的org/gnome/gedit/preferences/encodings中 <br>
+value一栏填入<code>['UTF-8','GB18030','GB2312','GBK','BIG5','CURRENT','UTF-16']</code></p><div class="md-section-divider"></div><h2 data-anchor-id="htgu" id="安装cgal">安装CGAL</h2><p data-anchor-id="bsm0">首先安装依赖库:</p><ul data-anchor-id="5ych">
+<li>CMake (&gt;= 2.8.11) </li>
+</ul><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="6wh7"><ol class="linenums"><li class="L0"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install cmake</span><span class="pun">-</span><span class="pln">qt</span><span class="pun">-</span><span class="pln">gui cmake </span></code></li></ol></pre><ul data-anchor-id="td37">
+<li>Boost (&gt;= 1.48) <br>
+下载<a href="http://www.boost.org/" target="_blank">Boost</a>, 进入解压目录:</li>
+</ul><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="fhod"><ol class="linenums"><li class="L0"><code><span class="pun">./</span><span class="pln">bootstrap</span><span class="pun">.</span><span class="pln">sh</span></code></li><li class="L1"><code><span class="pun">./</span><span class="pln">b2 </span><span class="pun">--</span><span class="pln">prefix</span><span class="pun">=</span><span class="str">/usr/</span><span class="kwd">local</span><span class="pun">/</span><span class="pln"> </span><span class="com">#安装目录是/usr/local/</span></code></li><li class="L2"><code><span class="pln">sudo </span><span class="pun">./</span><span class="pln">b2 install</span></code></li></ol></pre><ul data-anchor-id="909k">
+<li><p>Exact Arithmetic</p>
+
+<ul><li><p>GMP (&gt;= 4.1.4) <br>
+<a href="http://gmplib.org/" target="_blank">http://gmplib.org/</a> <br>
+or precompiled version that can be downloaded with CGAL-x.y-Setup.exe <br>
+based on <a href="http://fp.gladman.plus.com/computing/gmp4win.htm" target="_blank">http://fp.gladman.plus.com/computing/gmp4win.htm</a></p></li>
+<li><p>MPFR (&gt;= 2.2.1) <br>
+<a href="http://www.mpfr.org/" target="_blank">http://www.mpfr.org/</a> <br>
+or precompiled version that can be downloaded with CGAL-x.y-Setup.exe <br>
+based on <a href="http://fp.gladman.plus.com/computing/gmp4win.htm" target="_blank">http://fp.gladman.plus.com/computing/gmp4win.htm</a></p></li>
+<li><p>LEDA (&gt;= 6.2) <br>
+<a href="http://www.algorithmic-solutions.com/leda/index.htm" target="_blank">http://www.algorithmic-solutions.com/leda/index.htm</a></p></li></ul></li>
+</ul><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="nmg9"><ol class="linenums"><li class="L0"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install libgmp</span><span class="pun">-</span><span class="pln">dev libgmpxx4ldbl</span></code></li><li class="L1"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install libmpfr</span><span class="pun">-</span><span class="pln">dev libmpfr</span><span class="pun">-</span><span class="pln">doc</span></code></li><li class="L2"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install libleda</span><span class="pun">-</span><span class="pln">dev</span></code></li></ol></pre><ul data-anchor-id="tgqr">
+<li><p>Visualization</p>
+
+<ul><li><p>Qt5 (&gt;= 5.3) <br>
+<a href="http://qt-project.org/" target="_blank">http://qt-project.org/</a></p></li>
+<li><p>libQGLViewer <br>
+<a href="http://www.libqglviewer.com/" target="_blank">http://www.libqglviewer.com/</a></p></li>
+<li><p>Geomview <br>
+<a href="http://www.geomview.org/" target="_blank">http://www.geomview.org/</a> <br>
+Not supported with Visual C++</p></li></ul></li>
+</ul><p data-anchor-id="nc1r">命令行安装       </p><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="xzq9"><ol class="linenums"><li class="L0"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install qt5</span><span class="pun">-</span><span class="kwd">default</span><span class="pln"> qtcreator qt4</span><span class="pun">-</span><span class="pln">qtconfig qt4</span><span class="pun">-</span><span class="pln">demos qt4</span><span class="pun">-</span><span class="pln">designer</span></code></li><li class="L1"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install libqglviewer</span><span class="pun">-</span><span class="pln">dev geomview</span></code></li></ol></pre><ul data-anchor-id="lmo3">
+<li>Numerical Libraries <br>
+<ul><li>EIGEN (&gt;=3.1) <br>
+Required by the packages: <br>
+<ul><li>Estimation of Local Differential Properties of Point-Sampled Surfaces</li>
+<li>Approximation of Ridges and Umbilics on Triangulated Surface Meshes</li>
+<li>Planar Parameterization of Triangulated Surface Meshes</li>
+<li>Surface Reconstruction from Point Sets <br>
+<a href="http://eigen.tuxfamily.org" target="_blank">http://eigen.tuxfamily.org</a></li></ul></li></ul></li>
+</ul><p data-anchor-id="and5">下载并行矩阵计算软件包Eigen, 进入解压目录:</p><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="l8yo"><ol class="linenums"><li class="L0"><code><span class="pln">mkdir build</span></code></li><li class="L1"><code><span class="pln">cd build</span></code></li><li class="L2"><code><span class="pln">cmake </span><span class="pun">../</span></code></li><li class="L3"><code><span class="pln">sudo make install</span></code></li></ol></pre><pre data-anchor-id="h5e2"><code>  - BLAS, LAPACK, ATLAS
+   Required by the packages (if EIGEN is not available):
+   * Estimation of Local Differential Properties of Point-Sampled Surfaces
+   * Approximation of Ridges and Umbilics on Triangulated Surface Meshes
+   * Planar Parameterization of Triangulated Surface Meshes
+   http://www.netlib.org/blas/, http://www.netlib.org/lapack/
+   or precompiled version that can be downloaded with CGAL-x.y-Setup.exe
+
+  - MPFI
+   Required by the package:
+   o Algebraic Kernel
+   https://gforge.inria.fr/projects/mpfi/
+   (or shipped with RS http://vegas.loria.fr/rs/)
+</code></pre><p data-anchor-id="7ycx">命令行安装</p><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="m4sf"><ol class="linenums"><li class="L0"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install libblas</span><span class="pun">-</span><span class="pln">dev liblapack</span><span class="pun">-</span><span class="pln">dev libatlas</span><span class="pun">-</span><span class="pln">dev</span></code></li><li class="L1"><code><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install libmpfi</span><span class="pun">-</span><span class="pln">dev</span></code></li></ol></pre><ul data-anchor-id="ijve">
+<li>安装 CGAL <br>
+下载最新版本CGAL <br>
+<a href="https://github.com/CGAL/cgal/releases/tag/releases/CGAL-4.8" target="_blank">CGAL-4.8</a></li>
+</ul><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="jx63"><ol class="linenums"><li class="L0"><code><span class="pln">cmake </span><span class="pun">.</span></code></li><li class="L1"><code><span class="pln">make</span></code></li><li class="L2"><code><span class="pln">sudo make install</span></code></li></ol></pre></div>
+</body>
+</html>
