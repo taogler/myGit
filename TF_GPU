@@ -1,0 +1,38 @@
+Ubuntu 16.04.2 LTS 环境下 tensorflow GPU加速版配置步骤
+http://blog.csdn.net/zhaoyu106/article/details/52793183
+
+0 tensorflow 平台搭建
+sudo apt-get install python3-pip python-dev
+sudo pip3 install --upgrade numpy -i https://mirrors.ustc.edu.cn/pypi/web/simple
+sudo pip3 install --upgrade jupyter -i https://mirrors.ustc.edu.cn/pypi/web/simple
+sudo pip3 install --upgrade tensorflow -i https://mirrors.ustc.edu.cn/pypi/web/simple
+sudo pip3 install --upgrade matplotlib -i https://mirrors.ustc.edu.cn/pypi/web/simple
+sudo pip3 install --upgrade pydicom
+
+1 下载
+1.1下载 CUDA
+https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal
+
+1.2下载 cuDNN
+https://www.zhihu.com/question/37082272
+
+
+2 安装
+2.1 安装CUDA
+sudo dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
+sudo apt-get update  
+sudo apt-get install cuda
+
+2.2 安装cuDNN 
+tar zxvf cudnn-8.0-linux-x64-v6.0.tgz 
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+
+3 配置环境变量
+3.1 vim ~/.bashrc
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+export CUDA_HOME=/usr/local/cuda
+
+3.2 source  ~/.bashrc
+
