@@ -1,0 +1,40 @@
+Install GPU TensorFlow From Sources Ubuntu 16.04 and Cuda 8.0
+https://alliseesolutions.wordpress.com/2016/09/08/install-gpu-tensorflow-from-sources-w-ubuntu-16-04-and-cuda-8-0/
+
+1.Install Required Packages
+$ sudo apt-get install openjdk-8-jdk git python-dev python3-dev python-numpy python3-numpy python-six python3-six build-essential python-pip python3-pip python-virtualenv swig python-wheel python3-wheel libcurl3-dev libcupti-dev
+
+2.Update & Install Nvidia Drivers
+$ sudo add-apt-repository ppa:graphics-drivers/ppa
+$ sudo apt update
+
+3.Install Nvidia Toolkit 8.0 & CudNN
+$ cd ~/Downloads
+$ wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
+$ sudo sh cuda_8.0.61_375.26_linux-run --override --silent --toolkit
+
+$ tar -xzvf cudnn-8.0-linux-x64-v6.0.tgz
+$ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+$ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+$ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+
+$ ~/.bashrc
+  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+  export CUDA_HOME=/usr/local/cuda
+$ source ~/.bashrc
+
+4.To Install Using Python 3
+$ sudo pip3 install https://ci.tensorflow.org/view/tf-nightly/job/tf-nightly-linux/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON3.5,label=gpu-linux/lastSuccessfulBuild/artifact/pip_test/whl/tf_nightly_gpu-1.head-cp35-cp35m-linux_x86_64.whl
+OR  
+$ sudo pip3 install tensorflow-gpu
+$ python3 -c 'import os; import inspect; import tensorflow; print(os.path.dirname(inspect.getfile(tensorflow)))'
+
+
+ 
+¸ü¸Ägcc°æ±¾
+sudo apt-get install gcc-4.9
+cd /usr/bin
+ls -l gcc*
+sudo ln -s gcc-4.9  gcc
+gcc -v
+
